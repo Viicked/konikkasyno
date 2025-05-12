@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konikowo Casino - Lokalizacje</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../templates.js"> </script>
+    <script src="../login.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
+</head>
+<body onload="load_header()">
+    <div class="info-b3"> 
+        <div class="info-header"> Zaloguj się </div>
+        <div class="info-l"> 
+            <p> Nazwa użytkownika / email: </p> <input type="text" id="username" class="login-input" /> 
+            <p> Hasło: </p> <input type="text" class="login-input" id="password" />
+            <p> <input type="button" class="login-input-c" value="Zaloguj" onclick="Login()"/> </p>
+            <p1 id="error-space" class="error"> </p1>
+        </div>
+    </div>
+</body>
+</html>

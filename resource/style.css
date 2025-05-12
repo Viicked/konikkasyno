@@ -1,0 +1,122 @@
+html {
+    height: 100%;
+}
+.top-bar {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.top-text {
+    color: rgb(192, 185, 86);
+    font-size: 30px;
+    user-select: none;
+    text-decoration: none;
+}
+.top-text:hover {
+    color: rgb(255, 249, 215);
+    transition: 0.1s;
+}
+.text-headers {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+}
+body {
+    height: 100%;
+    margin: 0px;
+    background-color: rgb(14, 9, 6);
+    font-family: "Arial";
+}
+.info-b3,
+.info-b2,
+.info-b1 {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 200px);
+    height: 500px;
+    background-image: url("resource/bg2.png");
+    padding-inline: 100px;
+    border-bottom: 3px solid rgb(0, 0, 0);
+}
+.info-b2 {
+    justify-content: right;
+    text-align: right;
+    background-image: url("resource/background1.png");
+    background-size: cover;
+}
+.info-b2 > .info {
+
+    justify-content: right;
+}
+.info-b3 {
+    text-align: center;
+    height: fit-content;
+    min-height: calc(100% - 255px);
+}
+
+.info-header {
+    color: white;
+    font-size: 60px;
+    padding-top: 100px;
+    margin-bottom: 30px;
+}
+.info-l,
+.info-c,
+.info {
+    display: flex;
+    color: rgb(161, 161, 161);
+    font-size: 20px;
+    width: 100%;
+}
+.info > p {
+    max-width: 700px;
+}
+.info-l {
+    font-size: 30px;
+    align-items: center;
+    flex-direction: column;
+}
+.info-c {
+    align-items: center;
+    text-align: left;
+    flex-direction: column;
+}
+.login-input,
+.login-input-c {
+    font-size: 30px;
+    width: 300px;
+    background-color: rgb(216, 216, 216);
+}
+.login-input-c {
+    color: rgb(216, 216, 216);
+    background-color: rgb(56, 56, 56);
+    margin-top: 40px;
+    width: 309px;
+}
+
+.info-inp > p {
+    max-width: 300px;
+}
+.text-footer {
+    color: rgb(214, 214, 214);
+    font-size: 20px;
+    user-select: none;
+    text-decoration: none;
+}
+.row-footer {
+    display: flex;
+}
+.popup {
+    width: 80%;
+    border-radius: 50px;
+    margin: 10%;
+    top: 0px;
+    position: fixed;
+}
+.bottom-bar {
+    height: 100px;
+}
+.error {
+    color: rgb(192, 30, 30);
+}
