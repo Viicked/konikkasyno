@@ -22,7 +22,7 @@ async function Login() {
     const encryptedPassword = await encryptPassword(password);
 
     try {
-        const response = await fetch("https://127.0.0.1/post", {
+        const response = await fetch("login.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
