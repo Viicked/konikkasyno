@@ -1,7 +1,4 @@
 <?php
-    var_dump(json_decode(file_get_contents('php://input')));
-?>
-<?php
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
