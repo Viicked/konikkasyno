@@ -6,51 +6,55 @@ async function Login() {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
 
-    if (!username) {
-        FlashRed(usernameInput);
-        errorElement.innerText = "Puste pole nazwa użytkownika";
+    // Walidacja pól
+    if (!username || username.length < 5) {
+        showError(usernameInput, "Nazwa użytkownika musi mieć co najmniej 5 znaków");
         return;
     }
-    if (!password) {
-        FlashRed(passwordInput);
-        errorElement.innerText = "Puste pole hasło";
+
+    if (!password || password.length < 5) {
+        showError(passwordInput, "Hasło musi mieć co najmniej 5 znaków");
         return;
     }
-    if (username.length < 5) {
-        FlashRed(usernameInput);
-        errorElement.innerText = "Nazwa użytkownika nie może być krótsza niż 5 znaków";
-        return;
-    }
-    if (password.length < 5) {
-        FlashRed(passwordInput);
-        errorElement.innerText = "Hasło nie może być krótsze niż 5 znaków";
-        return;
-    }
-    errorElement.innerText = "";
+
+    errorElement.innerText = ""; // Czyść błędy
 
     const encryptedPassword = await encryptPassword(password);
 
     try {
         const response = await fetch("https://127.0.0.1/post", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify({
                 action: "login",
                 username,
-                password: encryptedPassword
-            })
+                password: encryptedPassword,
+            }),
         });
+
+        if (!response.ok) {
+            throw new Error("Błąd sieci lub serwera");
+        }
+
         const responseData = await response.json();
 
         if (!responseData.IsUser) {
             errorElement.innerText = "Nieznana nazwa użytkownika";
             return;
         }
+
         if (!responseData.IsValid) {
             errorElement.innerText = "Błędne hasło";
             return;
         }
+
+        // Sukces logowania
+        errorElement.innerText = "Logowanie udane!";
+        window.location.href = "/dashboard"; // Przekierowanie po sukcesie
     } catch (error) {
-        errorElement.innerText = "Błąd podczas logowania";
+        errorElement.innerText = "Błąd: " + error.message;
     }
 }
 
@@ -60,7 +64,11 @@ async function encryptPassword(password) {
     return encryptedPasswordObj.getHash("HEX");
 }
 
-function FlashRed(obj) {
-    obj.style.backgroundColor = "rgb(192, 30, 30)";
-    setTimeout(() => obj.style.backgroundColor = "", 300);
+function showError(inputElement, message) {
+    const errorElement = document.getElementById("error-space");
+    inputElement.style.backgroundColor = "rgb(192, 30, 30)";
+    errorElement.innerText = message;
+    setTimeout(() => {
+        inputElement.style.backgroundColor = "";
+    }, 300);
 }
